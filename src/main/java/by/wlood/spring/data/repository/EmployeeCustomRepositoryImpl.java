@@ -4,9 +4,11 @@ import by.wlood.spring.data.model.entity.Employee;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class EmployeeCustomRepositoryImpl implements EmployeeCustomRepository {
 
     @PersistenceContext
