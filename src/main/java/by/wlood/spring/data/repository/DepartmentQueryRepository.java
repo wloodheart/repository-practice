@@ -6,15 +6,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.List;
 
 @Repository
 public interface DepartmentQueryRepository extends JpaRepository<Department, Long> {
 
-    @Query("SELECT e FROM Department e JOIN FETCH e.relatedEntities WHERE e.id = :id")
-    Optional<Department> queryById(@Param("id") Long id);
+    @Query("SELECT e FROM Department e JOIN FETCH e.employees WHERE e.id = :id")
+    List<Department> queryById(@Param("id") Long id);
 
-    @Query("SELECT e FROM Department e JOIN FETCH e.relatedEntities WHERE e.name = :name")
-    Optional<Department> queryByName(@Param("name") String name);
+    @Query("SELECT e FROM Department e JOIN FETCH e.employees WHERE e.name = :name")
+    List<Department> queryByName(@Param("name") String name);
 
 }
